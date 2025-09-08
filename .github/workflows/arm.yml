@@ -24,12 +24,12 @@ jobs:
         os: [ubuntu-22.04]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         submodules: recursive
 
     - name: Set up PyPy 2.7
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: "pypy-2.7-v7.3.10"
 
