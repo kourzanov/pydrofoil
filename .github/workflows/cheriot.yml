@@ -24,12 +24,12 @@ jobs:
         os: [ubuntu-22.04]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
       with:
         submodules: recursive
 
     - name: Set up PyPy 2.7
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: "pypy-2.7-v7.3.10"
 
@@ -45,7 +45,7 @@ jobs:
 
     - name: Restore cached opam
       id: cache-opam-restore
-      uses: actions/cache/restore@v4
+      uses: actions/cache/restore@v5
       with:
         path: |
           ~/.opam
@@ -61,7 +61,7 @@ jobs:
     - name: Save cached opam
       if: steps.cache-opam-restore.outputs.cache-hit != 'true'
       id: cache-opam-save
-      uses: actions/cache/save@v4
+      uses: actions/cache/save@v5
       with:
         path: |
           ~/.opam
@@ -91,7 +91,7 @@ jobs:
         ./pydrofoil-cheriot cheriot/input/allocator-benchmark -l 274595167
 
     - name: Upload binary
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: pydrofoil-cheriot-${{ matrix.os }}
         path: ./pydrofoil-cheriot
